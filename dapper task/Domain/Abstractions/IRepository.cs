@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dapper_task.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,10 +10,11 @@ namespace dapper_task.Domain.Abstractions
 {
     public interface IRepository<T>
     {
-        T GetData(int id);
-        ObservableCollection<T> GetAllData();
-        void AddData(T data);
+        void CallSp();
+        List<Book> GetAllData();
+        void AddData(Book book);
         void UpdateData(T data);
-        void DeleteData(T data);
+        void DeleteData(int id);
+   
     }
 }
