@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
 namespace dapper_task.Commands
 {
     public class RelayCommand : ICommand
@@ -14,10 +13,8 @@ namespace dapper_task.Commands
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-
         private Action<object> _execute;
         private Predicate<object> _canExecute;
-
         public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
             if (execute == null)
@@ -27,7 +24,6 @@ namespace dapper_task.Commands
             _execute = execute;
             _canExecute = canExecute;
         }
-
         public bool CanExecute(object parameter)
         {
             return _canExecute == null ? true : _canExecute(parameter);

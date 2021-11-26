@@ -3,10 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dapper_task"
+        xmlns:local="clr-namespace:dapper_task" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-	<StackPanel>
 		<ListView   SelectedItem="{Binding SelectedBook}" Background="SpringGreen" ItemsSource="{Binding AllBooks}">
 
 			<i:Interaction.Triggers>
@@ -42,9 +41,6 @@
 				</GridView>
 			</ListView.View>
 		</ListView>
-	</StackPanel>
-    <StackPanel >
-        <StackPanel Width="400"  >
             <TextBlock FontSize="22"> Name</TextBlock>
             <TextBox FontSize="22" Text="{Binding SelectedBook.Name}" ></TextBox>
             <TextBlock FontSize="22">Price</TextBlock>
@@ -54,6 +50,4 @@
             <Button Command="{Binding AddCommand}" Margin="0,5,0,0" FontSize="22">Add </Button>
             <Button Command="{Binding UpdateCommand}" Margin="0,5,0,0" FontSize="22">Update </Button>
             <Button Command="{Binding DeleteCommand}" Margin="0,5,0,0" FontSize="22">delete</Button>
-        </StackPanel>
-    </StackPanel>
 </Window>

@@ -1,14 +1,14 @@
 ﻿using dapper_task.Commands;
 using dapper_task.Mapping;
-
 using System;
+
 using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
 namespace dapper_task.Domain.ViewModels
 {
     public class MainViewModel : BaseViewModel
@@ -19,15 +19,9 @@ namespace dapper_task.Domain.ViewModels
         public RelayCommand ResetCommand { get; set; }
         public RelayCommand DeleteOrderCommand { get; set; }
         public RelayCommand DeleteBookCommand { get; set; }
-
-
-
         public MainViewModel()
         {
-
             SelectedBook = new Book();
-
-
             AllBooks = App.DB.BookRepository.GetAllData();
             DeleteBookCommand = new RelayCommand((sender) =>
             {
@@ -42,8 +36,6 @@ namespace dapper_task.Domain.ViewModels
                 }
                 return false;
             });
-         
-          
             ResetCommand = new RelayCommand((sender) =>
             {
                 SelectedBook = new Book();
@@ -56,7 +48,6 @@ namespace dapper_task.Domain.ViewModels
                     SelectedBook = book;
                 }
             });
-
             AddCommand = new RelayCommand((sender) =>
             {
                 var item = App.DB.BookRepository.GetData(SelectedBook.Id);
@@ -72,32 +63,24 @@ namespace dapper_task.Domain.ViewModels
                 }
                 SelectedBook = new Book();
             });
-
             UpdateCommand = new RelayCommand((sender) =>
             {
                 App.DB.BookRepository.UpdateData(SelectedBook);
                 MessageBox.Show("Update Successfully");
                 SelectedBook = new Book();
             });
-
         }
         private ObservableCollection<Book> allBooks;
-
         public ObservableCollection<Book> AllBooks
         {
             get { return allBooks; }
             set { allBooks = value; OnPropertyChanged(); }
         }
-
-
         private Book selectedBook;
-
         public Book SelectedBook
         {
             get { return selectedBook; }
             set { selectedBook = value; OnPropertyChanged(); }
         }
-
-
     }
 }
